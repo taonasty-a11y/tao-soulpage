@@ -104,6 +104,70 @@
             position: relative;
             display: inline-block;
         }
+       
+        /* Стили для модального окна */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fff;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 25px;
+            position: relative;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+        }
+        .modal-content h3 {
+            color: #6c63ff;
+            margin-top: 0;
+            padding-right: 30px;
+        }
+        .modal-content img {
+            max-width: 100%;
+            border-radius: 12px;
+            margin: 10px 0;
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #999;
+        }
+        .close-modal:hover {
+            color: #333;
+        }
+       
+        /* Стили для кликабельных заметок в календаре */
+        .calendar-note-item {
+            background: #f0f2ff;
+            padding: 10px 12px;
+            margin-top: 8px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .calendar-note-item:hover {
+            background: #e0e4ff;
+            transform: translateX(3px);
+        }
+        .calendar-note-item b {
+            color: #6c63ff;
+        }
     </style>
 </head>
 <body>
@@ -242,10 +306,10 @@
                             <span class="emoji">🥏</span> <span class="emoji">🎱</span> <span class="emoji">🪀</span> <span class="emoji">🏓</span> <span class="emoji">🏸</span> <span class="emoji">🏒</span> <span class="emoji">🏑</span> <span class="emoji">🥍</span>
                             <span class="emoji">🏏</span> <span class="emoji">🥅</span> <span class="emoji">⛳</span> <span class="emoji">🪁</span> <span class="emoji">🏹</span> <span class="emoji">🎣</span> <span class="emoji">🤿</span> <span class="emoji">🥊</span>
                             <span class="emoji">🥋</span> <span class="emoji">🎽</span> <span class="emoji">🛹</span> <span class="emoji">🛷</span> <span class="emoji">🎿</span> <span class="emoji">⛷️</span> <span class="emoji">🏂</span> <span class="emoji">🏋️</span>
-                            <span class="emoji">🏋️‍♀️</span> <span class="emoji">🤼</span> <span class="emoji">🤼‍♀️</span> <span class="emoji">🤸</span> <span class="emoji">🤸‍♂️</span> <span class="emoji">⛹️</span> <span class="emoji">⛹️‍♀️</span> <span class="emoji">🤺</span>
-                            <span class="emoji">🤾</span> <span class="emoji">🤾‍♀️</span> <span class="emoji">🏌️</span> <span class="emoji">🏌️‍♀️</span> <span class="emoji">🏇</span> <span class="emoji">🧘</span> <span class="emoji">🏄</span> <span class="emoji">🏄‍♀️</span>
-                            <span class="emoji">🏊</span> <span class="emoji">🏊‍♀️</span> <span class="emoji">🏆</span> <span class="emoji">🥇</span> <span class="emoji">🥈</span> <span class="emoji">🥉</span> <span class="emoji">🏅</span> <span class="emoji">🎖️</span>
-                            <span class="emoji">🏵️</span> <span class="emoji">🎗️</span> <span class="emoji">🎫</span> <span class="emoji">🎟️</span> <span class="emoji">🎪</span> <span class="emoji">🤹</span> <span class="emoji">🤹‍♀️</span> <span class="emoji">🎭</span>
+                            <span class="emoji">🏋️♀️</span> <span class="emoji">🤼</span> <span class="emoji">🤼♀️</span> <span class="emoji">🤸</span> <span class="emoji">🤸♂️</span> <span class="emoji">⛹️</span> <span class="emoji">⛹️♀️</span> <span class="emoji">🤺</span>
+                            <span class="emoji">🤾</span> <span class="emoji">🤾♀️</span> <span class="emoji">🏌️</span> <span class="emoji">🏌️♀️</span> <span class="emoji">🏇</span> <span class="emoji">🧘</span> <span class="emoji">🏄</span> <span class="emoji">🏄♀️</span>
+                            <span class="emoji">🏊</span> <span class="emoji">🏊♀️</span> <span class="emoji">🏆</span> <span class="emoji">🥇</span> <span class="emoji">🥈</span> <span class="emoji">🥉</span> <span class="emoji">🏅</span> <span class="emoji">🎖️</span>
+                            <span class="emoji">🏵️</span> <span class="emoji">🎗️</span> <span class="emoji">🎫</span> <span class="emoji">🎟️</span> <span class="emoji">🎪</span> <span class="emoji">🤹</span> <span class="emoji">🤹♀️</span> <span class="emoji">🎭</span>
                             <span class="emoji">🩰</span> <span class="emoji">🎨</span> <span class="emoji">🎬</span> <span class="emoji">🎤</span> <span class="emoji">🎧</span> <span class="emoji">🎼</span> <span class="emoji">🎹</span> <span class="emoji">🥁</span>
                             <span class="emoji">🎷</span> <span class="emoji">🎺</span> <span class="emoji">🎸</span> <span class="emoji">🪕</span> <span class="emoji">🎻</span> <span class="emoji">🎲</span> <span class="emoji">♟️</span> <span class="emoji">🎯</span>
                             <span class="emoji">🎳</span> <span class="emoji">🎮</span> <span class="emoji">🎰</span>
@@ -335,6 +399,15 @@
         </div>
     </div>
 
+</div>
+
+<!-- Модальное окно для просмотра заметки -->
+<div id="noteModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div id="modalBody"></div>
+        <button onclick="closeModal()" style="margin-top:15px;">Закрыть</button>
+    </div>
 </div>
 
 <script>
@@ -559,7 +632,7 @@
             const div = document.createElement("div");
             div.className = "note";
             div.innerHTML = `
-                <h3>${n.title}</h3>
+                <h3>${escapeHtml(n.title)}</h3>
                 <div>${n.content}</div>
                 ${n.image ? `<img src="${n.image}">` : ""}
                 <small>${n.date || ""}</small><br><br>
@@ -570,14 +643,59 @@
         });
     }
 
+    // Функция для экранирования HTML
+    function escapeHtml(text) {
+        if (!text) return '';
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    // Модальное окно
+    function showNoteModal(note) {
+        const modal = document.getElementById("noteModal");
+        const modalBody = document.getElementById("modalBody");
+        modalBody.innerHTML = `
+            <h3>📌 ${escapeHtml(note.title)}</h3>
+            <div>${note.content}</div>
+            ${note.image ? `<img src="${note.image}" alt="Изображение">` : ""}
+            <small>📅 ${note.date || "без даты"}</small>
+        `;
+        modal.style.display = "flex";
+    }
+
+    function closeModal() {
+        document.getElementById("noteModal").style.display = "none";
+    }
+
+    // Закрытие по клику на крестик
+    document.querySelector(".close-modal").onclick = closeModal;
+    // Закрытие по клику вне окна
+    window.onclick = function(event) {
+        const modal = document.getElementById("noteModal");
+        if (event.target === modal) {
+            closeModal();
+        }
+    }
+
     function renderCalendarNotes() {
         const date = document.getElementById("calendar").value;
         const container = document.getElementById("calendarNotes");
         container.innerHTML = "";
-        getNotes().filter(n => n.date === date).forEach(n => {
+        const notesOnDate = getNotes().filter(n => n.date === date);
+       
+        if (notesOnDate.length === 0) {
+            container.innerHTML = "<div style='margin-top:12px;color:#888;'>✨ Нет записей за этот день</div>";
+            return;
+        }
+       
+        notesOnDate.forEach(n => {
             const div = document.createElement("div");
-            div.className = "note";
-            div.innerHTML = `<b>${n.title}</b><br><button onclick="deleteNote(${n.id})">🗑 Удалить</button>`;
+            div.className = "calendar-note-item";
+            div.innerHTML = `<b>📌 ${escapeHtml(n.title)}</b>`;
+            div.onclick = (function(note) {
+                return function() { showNoteModal(note); };
+            })(n);
             container.appendChild(div);
         });
     }
